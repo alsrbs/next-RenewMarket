@@ -25,7 +25,7 @@ const Input: FC<InputProps> = ({
   return (
     <div className='relative w-full'> {/* 'reative' -> 'relative' 수정 */}
       {formatPrice && 
-        <span className='absolute text-neutral-700 top-5 left-2'>\</span>
+        <span className='absolute text-neutral-700 top-5 left-2'>₩</span>
       }
       <input 
         id={id}
