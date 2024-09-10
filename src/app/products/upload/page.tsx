@@ -9,8 +9,11 @@ import ImageUpload from '@/components/ImageUpload';
 import { categories } from '@/components/categories/Categories';
 import CategoryInput from '@/components/categories/CategoryInput';
 import dynamic from 'next/dynamic';
+import axios from 'axios';
+import { useRouter } from 'next/navigation';
 
 const ProductUploadPage = () => {
+  const router = useRouter();
   const [isLoading, setIsLoading] = useState(false);
 
   const {
@@ -45,6 +48,19 @@ const ProductUploadPage = () => {
 
   const onSubmit: SubmitHandler<FieldValues> = (data) => {
 
+    setIsLoading(true);
+
+    axios.post('/api/products', data)
+    .then(res => {
+      // router.push(`/products/${res.data.id}`);
+      router.push(`/`);
+    })
+    .catch(err => {
+      console.error(err);
+    })
+    .finally(() => {
+      setIsLoading(false);
+    })
   };
 
   const setCustomValue = (id: string, value: any) => {
@@ -128,7 +144,9 @@ const ProductUploadPage = () => {
           <hr />
 
           {/* KakaoMap */}
-          <KakaoMap setCustomValue={setCustomValue} latitude={latitude} longitude={longitude} />
+          <div style={{ width: "100%", height: "360px" }}>
+            <KakaoMap setCustomValue={setCustomValue} latitude={latitude} longitude={longitude} />
+          </div>
 
           <Button label="상품 생성하기" />
         </form>
