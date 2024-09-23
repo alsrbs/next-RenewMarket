@@ -103,7 +103,7 @@ export async function POST(
         try {            
             const message = await prisma.message.create({
                 data: {
-                    text: body.content,
+                    text: body.text,
                     image: body.image,
                     senderId: body.senderId,
                     receiverId: body.receiverId,

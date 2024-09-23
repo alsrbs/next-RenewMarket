@@ -12,7 +12,7 @@ const Navbar = ({currentUser}: NavbarProps) => {
   const [meun, setMenu] = useState(false);
 
   const handleMenu = () => {
-
+    setMenu(!meun);
   }
 
   return (
@@ -20,7 +20,7 @@ const Navbar = ({currentUser}: NavbarProps) => {
       <div className='flex item-center justify-between mx-5 sm:mx-10 lg:mx-20'>
 
         <div className='flex items-center text-2xl h-14'>
-          <Link href="/">Logo</Link>
+          <Link href="/">중고 마켓</Link>
         </div>
 
         <div className='text-2xl sm:hidden'>
@@ -35,7 +35,7 @@ const Navbar = ({currentUser}: NavbarProps) => {
 
       </div>
 
-      <div className='block sm:hidden'>
+      <div className='block sm:hidden p-3'>
         {meun === false ? null : <NavItem mobile currentUser={currentUser} />}
       </div>
     </nav>

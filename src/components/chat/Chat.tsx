@@ -15,14 +15,6 @@ interface IChatProps {
 }
 
 const Chat = ({currentUser, receiver, setLayout}: IChatProps) => {
-  
-  if (!receiver.receiverName || !currentUser)
-    return <div className='w-full h-full'>Chat / !receiver.receiverName || !currentUser</div>
-
-  const conversation: TConversation | undefined =
-    currentUser?.conversations.find((conversation: TConversation) =>
-      conversation.users.find((user) => user.id === receiver.receiverId)
-  );
 
   const messagesEndRef = useRef<null | HTMLDivElement>(null);
 
@@ -35,6 +27,15 @@ const Chat = ({currentUser, receiver, setLayout}: IChatProps) => {
   useEffect(() => {
     scrollToBottom();
   });
+  
+  if (!receiver.receiverName || !currentUser)
+    return <div className='w-full h-full'>Chat / !receiver.receiverName || !currentUser</div>
+
+  const conversation: TConversation | undefined =
+    currentUser?.conversations.find((conversation: TConversation) =>
+      conversation.users.find((user) => user.id === receiver.receiverId)
+  );
+
 
   return (
     <div className='w-full'>

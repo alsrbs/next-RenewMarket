@@ -28,7 +28,7 @@ const sendRequest = (url: string, {arg}: {
 
 const Input = ({receiverId, currentUserId}: InputProps) => {
 
-  const [message, setMessage] = useState('');
+  const [message, setMessage] = useState<string>('');
   const [imagePreview, setImagePreview] = useState<string | null>(null);
   const [image, setImage] = useState<File | null>(null);
 
@@ -48,6 +48,7 @@ const Input = ({receiverId, currentUserId}: InputProps) => {
   
   const handleSumit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+
     const imgUrl = image ? await uploadImage(image as File) : null;
 
     if(message || imgUrl) {
