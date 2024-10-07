@@ -7,9 +7,10 @@ interface InputProps {
   type?: string;
   disabled?: boolean;
   formatPrice?: boolean;
-  required?: boolean;
+  required?: { value: boolean; message: string };
   register: UseFormRegister<FieldValues>;
   errors: FieldErrors;
+  pattern?: { value: RegExp; message: string };
 }
 
 const Input: FC<InputProps> = ({
@@ -20,17 +21,21 @@ const Input: FC<InputProps> = ({
     formatPrice,
     register,
     required,
-    errors
+    errors,
+    pattern
 }) => {
   return (
-    <div className='relative w-full'> {/* 'reative' -> 'relative' 수정 */}
+    <div className='relative w-full'> 
       {formatPrice && 
         <span className='absolute text-neutral-700 top-5 left-2'>₩</span>
       }
       <input 
         id={id}
         disabled={disabled}
-        {...register(id, {required})}
+        {...register(id, { 
+          required: required, 
+          pattern: pattern || undefined
+        })}
         placeholder=''
         type={type}
         className={`
@@ -70,6 +75,11 @@ const Input: FC<InputProps> = ({
       >
         {label}
       </label>
+      {errors[id] && (
+        <span className="text-rose-500 text-sm mt-1">
+          {errors[id]?.message?.toString()}
+        </span>
+      )}
     </div>
   )
 }

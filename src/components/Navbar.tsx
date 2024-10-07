@@ -20,7 +20,7 @@ const Navbar = ({currentUser}: NavbarProps) => {
       <div className='flex item-center justify-between mx-5 sm:mx-10 lg:mx-20'>
 
         <div className='flex items-center text-2xl h-14'>
-          <Link href="/">중고 마켓</Link>
+          <Link href="/">중고마켓</Link>
         </div>
 
         <div className='text-2xl sm:hidden'>

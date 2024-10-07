@@ -2,6 +2,7 @@ import axios from "axios";
 import { useRouter } from "next/navigation";
 import React, { useMemo } from "react";
 import { toast } from "react-toastify";
+import { User } from "@prisma/client";
 
 interface UseFavorite {
   productId: string;

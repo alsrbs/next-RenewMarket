@@ -1,4 +1,3 @@
-import axios from 'axios';
 import React, { FormEvent, useRef, useState } from 'react'
 import { CgClose } from 'react-icons/cg';
 import { IoImageOutline } from 'react-icons/io5';
@@ -105,7 +104,7 @@ const Input = ({receiverId, currentUserId}: InputProps) => {
         multiple={false}
       />
 
-      <div onClick={chooseImage} className='text-2xl text-gray-200 cursor-pointer'>
+      <div onClick={chooseImage} className='text-2xl text-gray-400 cursor-pointer'>
         <IoImageOutline />
       </div>
       <button

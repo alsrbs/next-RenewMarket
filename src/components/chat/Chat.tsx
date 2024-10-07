@@ -29,7 +29,7 @@ const Chat = ({currentUser, receiver, setLayout}: IChatProps) => {
   });
   
   if (!receiver.receiverName || !currentUser)
-    return <div className='w-full h-full'>Chat / !receiver.receiverName || !currentUser</div>
+    return <div className='w-full h-full'></div>
 
   const conversation: TConversation | undefined =
     currentUser?.conversations.find((conversation: TConversation) =>

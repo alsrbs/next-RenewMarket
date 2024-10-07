@@ -12,6 +12,8 @@ import dynamic from 'next/dynamic';
 import axios from 'axios';
 import { useRouter } from 'next/navigation';
 
+const KakaoMap = dynamic(() => import('../../../components/KakaoMap'), { ssr: false });
+
 const ProductUploadPage = () => {
   const router = useRouter();
   const [isLoading, setIsLoading] = useState(false);
@@ -42,12 +44,7 @@ const ProductUploadPage = () => {
   const latitude = watch('latitude');
   const longitude = watch('longitude');
 
-  const KakaoMap = dynamic(() => import('../../../components/KakaoMap'), {
-    ssr: false,
-  });
-
   const onSubmit: SubmitHandler<FieldValues> = (data) => {
-
     setIsLoading(true);
 
     axios.post('/api/products', data)
@@ -56,7 +53,8 @@ const ProductUploadPage = () => {
       router.push(`/`);
     })
     .catch(err => {
-      console.error(err);
+      console.error(err.message);
+      alert(err)
     })
     .finally(() => {
       setIsLoading(false);
@@ -144,7 +142,7 @@ const ProductUploadPage = () => {
           <hr />
 
           {/* KakaoMap */}
-          <div style={{ width: "100%", height: "360px" }}>
+          <div style={{ width: "100%", height: "100%" }}>
             <KakaoMap setCustomValue={setCustomValue} latitude={latitude} longitude={longitude} />
           </div>
 

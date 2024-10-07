@@ -8,7 +8,6 @@ interface NavItemProps {
   currentUser?: User | null; 
 }
 const NavItem = ({ mobile, currentUser }: NavItemProps) => {
-  console.log(currentUser?.name)
 
   return (
     <ul className={`text-md justify-center flex gap-4 w-full items-center ${mobile && "flex-col h-full"}`}>
