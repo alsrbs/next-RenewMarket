@@ -43,7 +43,7 @@ const LoginPage = () => {
                     disabled={isLoading}
                     register={register}
                     errors={errors}
-                    required
+                    required = {{ value: true, message: "필수 입력" }}
                 />
                 <Input
                     id="password"
@@ -52,7 +52,7 @@ const LoginPage = () => {
                     disabled={isLoading}
                     register={register}
                     errors={errors}
-                    required
+                    required = {{ value: true, message: "필수 입력" }}
                 />
 
                 <Button 

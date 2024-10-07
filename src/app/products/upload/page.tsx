@@ -91,7 +91,7 @@ const ProductUploadPage = () => {
             disabled={isLoading}
             register={register}
             errors={errors}
-            required
+            required = {{ value: true, message: "필수 입력" }}
           />
           <hr />
           <Input 
@@ -100,7 +100,7 @@ const ProductUploadPage = () => {
             disabled={isLoading}
             register={register}
             errors={errors}
-            required
+            required = {{ value: true, message: "필수 입력" }}
           />
           <hr />
           <Input 
@@ -110,7 +110,7 @@ const ProductUploadPage = () => {
             disabled={isLoading}
             register={register}
             errors={errors}
-            required
+            required = {{ value: true, message: "필수 입력" }}
           />
           <hr />
           
